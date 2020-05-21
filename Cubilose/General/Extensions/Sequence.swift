@@ -17,33 +17,39 @@ public extension Cubilose where T: Sequence {
 
 
 
+/// Iterates through enum elements
+/// http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type
+/// Starting with Swift 4.2 (with Xcode 10), just add protocol conformance to CaseIterable to benefit from allCases
+#if !swift(>=4.2)
+public protocol CaseIterable {
+    associatedtype AllCases: Collection where AllCases.Element == Self
+    static var allCases: AllCases { get }
+}
+extension CaseIterable where Self: Hashable {
+    static var allCases: [Self] {
+        return [Self](AnySequence { () -> AnyIterator<Self> in
+            var raw = 0
+            var first: Self?
+            return AnyIterator {
+                let current = withUnsafeBytes(of: &raw) { $0.load(as: Self.self) }
+                if raw == 0 {
+                    first = current
+                } else if current == first {
+                    return nil
+                }
+                raw += 1
+                return current
+            }
+        })
+    }
+}
+#endif
 
 
 
 public struct ConditionSequence <S: Sequence> : Sequence {
-    public struct Iterator<I: IteratorProtocol>: IteratorProtocol {
-        public typealias Element = I.Element
-        
-        private var subIterator: I
-        private let condition: (I.Element?) -> Bool
-        
-        init(iter: I, condition:@escaping (Self.Element?) -> Bool) {
-            self.subIterator = iter
-            self.condition = condition
-        }
-        
-        public mutating func next() -> I.Element? {
-            let next = subIterator.next()
-            if condition(next) {
-                return next
-            } else {
-                return nil
-            }
-        }
-    }
-
-    
     public typealias Element = S.Element
+    public typealias Iterator = AnyIterator
     
     private let subSequece: S
     private let condition: (Self.Element?) -> Bool
@@ -53,13 +59,15 @@ public struct ConditionSequence <S: Sequence> : Sequence {
         self.condition = condition
     }
     
-    public func makeIterator() -> Self.Iterator<S.Iterator> {
-        return ConditionSequence.Iterator(iter: subSequece.makeIterator(), condition: condition)
-    }
-
-    public var underestimatedCount: Int { return 0 }
-
-    public func withContiguousStorageIfAvailable<R>(_ body: (UnsafeBufferPointer<Self.Element>) throws -> R) rethrows -> R? {
-        return nil
+    public func makeIterator() -> AnyIterator<Element> {
+        var generator = subSequece.makeIterator()
+        var isEndIterator = false
+        
+        return AnyIterator<Element> {
+            let next = generator.next()
+            if !isEndIterator { isEndIterator = !self.condition(next) }
+            if isEndIterator { return nil }
+            return next
+        }
     }
 }

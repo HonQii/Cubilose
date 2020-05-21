@@ -9,9 +9,9 @@
 import Foundation
 
 public protocol CubiloseProtocol {
-    associatedtype T
-    var cb: T { get }
-    static var cb: T.Type { get }
+    associatedtype WrapperType
+    var cb: WrapperType { get }
+    static var cb: WrapperType.Type { get }
 }
 
 public extension CubiloseProtocol {
@@ -21,6 +21,6 @@ public extension CubiloseProtocol {
 
 
 public struct Cubilose<T> {
-    public let this: T
+    public var this: T
     public init(_ val: T) { this = val }
 }

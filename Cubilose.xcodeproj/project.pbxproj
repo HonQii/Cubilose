@@ -14,6 +14,11 @@
 		7A60D0AF24700BAB00042256 /* FuncTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0AE24700BAB00042256 /* FuncTools.swift */; };
 		7A60D0B324701A1B00042256 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0B224701A1B00042256 /* Sequence.swift */; };
 		7A60D0B52470414300042256 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0B42470414300042256 /* Array.swift */; };
+		7A60D0B92476CFFE00042256 /* EdgesTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0B82476CFFE00042256 /* EdgesTextField.swift */; };
+		7A60D0BB2476D05000042256 /* EdgesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0BA2476D05000042256 /* EdgesLabel.swift */; };
+		7A60D0BD2476D20E00042256 /* Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0BC2476D20E00042256 /* Bool.swift */; };
+		7A60D0BF2476D2BF00042256 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0BE2476D2BF00042256 /* CGPoint.swift */; };
+		7A60D0C22476DCEA00042256 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A60D0C12476DCEA00042256 /* CGSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,11 @@
 		7A60D0AE24700BAB00042256 /* FuncTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncTools.swift; sourceTree = "<group>"; };
 		7A60D0B224701A1B00042256 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		7A60D0B42470414300042256 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		7A60D0B82476CFFE00042256 /* EdgesTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesTextField.swift; sourceTree = "<group>"; };
+		7A60D0BA2476D05000042256 /* EdgesLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgesLabel.swift; sourceTree = "<group>"; };
+		7A60D0BC2476D20E00042256 /* Bool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bool.swift; sourceTree = "<group>"; };
+		7A60D0BE2476D2BF00042256 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		7A60D0C12476DCEA00042256 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,7 @@
 		7A60D0932470085000042256 /* Cubilose */ = {
 			isa = PBXGroup;
 			children = (
+				7A60D0B62476CF7000042256 /* iOS */,
 				7A60D0B024700BAF00042256 /* General */,
 				7A60D0942470085000042256 /* Cubilose.h */,
 				7A60D0AB247008F300042256 /* Cubilose.swift */,
@@ -110,6 +121,34 @@
 			children = (
 				7A60D0B224701A1B00042256 /* Sequence.swift */,
 				7A60D0B42470414300042256 /* Array.swift */,
+				7A60D0BC2476D20E00042256 /* Bool.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7A60D0B62476CF7000042256 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7A60D0C02476D2DB00042256 /* Extensions */,
+				7A60D0B72476CF8F00042256 /* Views */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		7A60D0B72476CF8F00042256 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A60D0B82476CFFE00042256 /* EdgesTextField.swift */,
+				7A60D0BA2476D05000042256 /* EdgesLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A60D0C02476D2DB00042256 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7A60D0BE2476D2BF00042256 /* CGPoint.swift */,
+				7A60D0C12476DCEA00042256 /* CGSize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -226,8 +265,13 @@
 			files = (
 				7A60D0AC247008F300042256 /* Cubilose.swift in Sources */,
 				7A60D0B52470414300042256 /* Array.swift in Sources */,
+				7A60D0B92476CFFE00042256 /* EdgesTextField.swift in Sources */,
+				7A60D0BB2476D05000042256 /* EdgesLabel.swift in Sources */,
+				7A60D0BF2476D2BF00042256 /* CGPoint.swift in Sources */,
 				7A60D0AF24700BAB00042256 /* FuncTools.swift in Sources */,
 				7A60D0B324701A1B00042256 /* Sequence.swift in Sources */,
+				7A60D0C22476DCEA00042256 /* CGSize.swift in Sources */,
+				7A60D0BD2476D20E00042256 /* Bool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 import Foundation
 
+extension Array: CubiloseProtocol {}
 public extension Cubilose where T == Array<Any> {
     func partition(n: Int, step: Int? = nil, pad: [T.Element]? = nil) -> Array<Array<T.Element>>{
         if n > this.count { return [this] }
