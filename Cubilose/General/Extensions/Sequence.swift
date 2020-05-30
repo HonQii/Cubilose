@@ -15,6 +15,25 @@ public extension Cubilose where T: Sequence {
     }
 }
 
+public extension Cubilose where T: Sequence, T.Iterator.Element: Hashable {
+    func unique() -> [T.Iterator.Element] {
+        var seen: Set<T.Iterator.Element> = []
+        return this.filter{ seen.insert($0).inserted }
+    }
+}
+
+
+public extension Cubilose where T: Sequence {
+    func unique(by compareClosure: @escaping (T.Element, T.Element) -> Bool) -> [T.Element] {
+        var seen = [T.Element]()
+        this.forEach { outer in
+            if !seen.contains(where: { (inner) -> Bool in return compareClosure(outer, inner) }) {
+                seen.append(outer)
+            }
+        }
+        return seen
+    }
+}
 
 
 /// Iterates through enum elements
